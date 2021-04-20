@@ -1,10 +1,9 @@
 import React from 'react';
 
-const Recipe = ({ title, ingredients }) => {
+const Recipe = ({ title }) => {
   return (
     <>
-      <p>{title}</p>
-      <p>{ingredients}</p>
+      <p key={title}>{title}</p>
     </>
   );
 };

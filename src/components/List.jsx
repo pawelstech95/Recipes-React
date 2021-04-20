@@ -2,19 +2,21 @@ import React from 'react';
 import Recipe from './Recipe';
 
 const List = ({ data }) => {
-  const recipes = data.map((recipe) => (
-    <li>
-      <Recipe
-        key={recipe.id}
-        id={recipe.id}
-        title={recipe.title}
-        ingredients={recipe.ingredients}
-      />
-    </li>
-  ));
-  //  console.log(recipe)
+  const recipes = data.map((recipe) => {
+    // console.log(recipe);
+    return (
+      <li>
+        <Recipe
+          key={recipe._id}
+          title={recipe.title}
+          ingredients={recipe.ingredients}
+          description={recipe.description}
+        />
+      </li>
+    );
+  });
 
-  return <ul>{recipes}</ul>;
+  return <>{recipes}</>;
 };
 
 export default List;
