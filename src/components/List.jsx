@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import Recipe from './Recipe';
 
 const List = ({ data }) => {
+  const [list, setNewList] = useState(data);
   const handleRemoveButton = (id) => {
     console.log(id);
-    const newList = data.filter(list => list.id !== id );
-    console.log(newList);
-
+    setNewList(list.filter((item) => item.id !== id));
+    console.log(list);
   };
 
-  const recipes = data.map((recipe) => {
+  const recipes = list.map((recipe) => {
     return (
       <li key={recipe.id}>
         <Recipe
