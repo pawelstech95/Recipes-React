@@ -1,3 +1,9 @@
+body {
+  background-color: rgba(219, 199, 199, 0.479);
+  font-size: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 li {
   list-style: none;
   padding-bottom: 20px;
@@ -5,6 +11,7 @@ li {
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
 .btn {
   background-color: rgb(214, 198, 198);
@@ -16,6 +23,10 @@ a {
   display: inline-block;
   margin: 2px 1px;
   cursor: pointer;
+  transition: 0.5s;
+}
+.btn:hover {
+  opacity: 0.8;
 }
 .btn__edit {
   background-color: hsl(121, 37%, 44%);

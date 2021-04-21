@@ -3,13 +3,14 @@ import Recipe from './Recipe';
 
 const List = ({ data }) => {
   const [list, setNewList] = useState(data);
+
   const handleRemoveButton = (id) => {
-    console.log(id);
+    // console.log(id);
     setNewList(list.filter((item) => item.id !== id));
-    console.log(list);
   };
 
   const recipes = list.map((recipe) => {
+    // data.map zmienilem na list.map ?? czy moge tak zrobic?
     return (
       <li key={recipe.id}>
         <Recipe
@@ -23,7 +24,6 @@ const List = ({ data }) => {
       </li>
     );
   });
-
   return <>{recipes}</>;
 };
 
