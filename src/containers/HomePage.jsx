@@ -39,7 +39,7 @@ const HomePage = () => {
         <div>Loading...</div>
       ) : (
         <ul>
-          <List data={data} />
+          <List data={[...data]} />
         </ul>
       )}
        <button className='btn btn__linkTo'>
