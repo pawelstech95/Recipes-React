@@ -1,9 +1,10 @@
 // import useSWR from 'swr';
-
+import {Link} from 'react-router-dom';
 import List from '../components/List';
 
 // import { fetcher } from '../utils';
-const data = [ // temporary data
+const data = [
+  // temporary data
   {
     id: 1,
     title: 'Pomidorowa',
@@ -29,11 +30,11 @@ const HomePage = () => {
 
   // const { data } = useSWR(url, fetcher);
 
-  console.log(data);
+  // console.log(data);
 
   return (
     <div>
-      <h2>Lista przepisów: </h2>
+      <h2>Recipes list: </h2>
       {!data ? (
         <div>Loading...</div>
       ) : (
@@ -41,6 +42,9 @@ const HomePage = () => {
           <List data={data} />
         </ul>
       )}
+       <button className='btn btn__linkTo'>
+        <Link to='/create'>Add a recipe</Link>
+      </button> 
     </div>
   );
 };

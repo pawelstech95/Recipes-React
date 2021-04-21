@@ -1,9 +1,15 @@
 import React from 'react';
 
-const Recipe = ({ title }) => {
+const Recipe = ({ title, id, handleRemove, handleEdit }) => {
   return (
     <>
-      <p key={title}>{title}</p>
+      <p>{title}</p>
+      <button className="btn btn__edit" onClick={handleEdit}>
+        Edit
+      </button>
+      <button className="btn btn__remove" onClick={handleRemove}>
+        Remove
+      </button>
     </>
   );
 };
