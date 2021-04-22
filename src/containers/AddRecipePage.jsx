@@ -8,7 +8,7 @@ const AddRecipe = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (values) => console.log(values); // w dokumentacji - data
-  console.log(errors, 'errors')
+  console.log(errors, 'errors');
   return (
     console.log('render'),
     (
@@ -16,17 +16,17 @@ const AddRecipe = () => {
         <h2>Create recipe</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <label>
-            Title: <br/>
+            Title: <br />
             <input
               name="title"
-              {...register}
+              {...register('Title')}
               type="text"
               // value={''}
               placeholder=" e.g. pizza"
             />
           </label>
           <label>
-            Ingredients: <br/>
+            Ingredients: <br />
             <select {...register('Ingredients')} multiple>
               <option value="chease">chease</option>
               <option value="milk">milk</option>
@@ -34,8 +34,12 @@ const AddRecipe = () => {
             </select>
           </label>
           <label>
-            Description <br/>
-            <textarea type="text" placeholder="Description..." />
+            Description <br />
+            <textarea
+              {...register('Description')}
+              type="text"
+              placeholder="Description..."
+            />
           </label>
           <button className="btn btn__add" type="submit">
             Add
@@ -48,32 +52,3 @@ const AddRecipe = () => {
 };
 
 export default AddRecipe;
-
-// <form>
-//         <label>
-//           Title
-//           <input type="text" value={''} placeholder=" e.g. pizza" />
-//         </label>
-//         <br />
-//         <br /> <br />
-//         <>
-//           <input type="checkbox" />
-//           <label> Cheasse</label>
-//           <br />
-//           <input type="checkbox" />
-//           <label> Tomatoes</label>
-//           <br />
-//           <input type="checkbox" />
-//           <label> Pineapple</label>
-//         </>
-//         <br />
-//         <br />
-//         <br />
-//         <label>
-//           Description
-//           <textarea type="text" value={''} placeholder="Description..." />
-//         </label>
-//         <br/>
-//         <button className='btn'>Add</button>
-//         <button className='btn'>Clear</button>
-//       </form>
