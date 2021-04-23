@@ -6,7 +6,7 @@ const Recipe = ({ title, id, handleRemove, handleEdit }) => {
     <>
       <p>{title}</p>
       <button className="btn btn__edit" onClick={handleEdit}>
-        <Link to="/:id/edit">Edit</Link>
+        <Link to={`/${id}/edit`}>Edit</Link>
       </button>
       <button className="btn btn__detail" onClick={handleEdit}>
         <Link to={`/${id}`}>Detail</Link>
