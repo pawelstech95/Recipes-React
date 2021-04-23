@@ -24,7 +24,7 @@ function App() {
           <Route path="/create" exact component={AddRecipePage} />
           <Route path="/:id" exact component={DetailPage} />
           <Route path="/:id/edit" exact component={EditRecipePage} />
-          <Route component={ErrorPage} />
+          <Route path="*" component={ErrorPage} />
         </Switch>
       </div>
     </Router>

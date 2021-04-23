@@ -9,7 +9,7 @@ const Recipe = ({ title, id, handleRemove, handleEdit }) => {
         <Link to="/:id/edit">Edit</Link>
       </button>
       <button className="btn btn__detail" onClick={handleEdit}>
-        <Link to="/:id">Detail</Link>
+        <Link to={`/${id}`}>Detail</Link>
       </button>
       <button className="btn btn__remove" onClick={handleRemove}>
         Remove

@@ -1,12 +1,24 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import { data } from '../utils';
-const DetailPage = (e) => {
-  console.log(data); // [{},{}]
-  console.log(e);
-  const newData = data.map((recipe) => recipe.id);
+const DetailPage = ({ match }) => {
+    const id = match.params.id;
+    // const [item, setNewItem] = useState(data);
+    // const newData = setNewItem(item.filter((recipe) => recipe.id !== id));
 
-  return <p>{newData}</p>;
+    console.log(data); // [{},{}]
+    console.log(id, 'params');
+    // console.log(newData);
+
+
+  return <p></p>;
 };
 
 export default DetailPage;
+
+
+
+
+
+
+
