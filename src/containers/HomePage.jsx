@@ -3,27 +3,8 @@ import {Link} from 'react-router-dom';
 import List from '../components/List';
 
 // import { fetcher } from '../utils';
-const data = [
-  // temporary data
-  {
-    id: 1,
-    title: 'Pomidorowa',
-    ingredients: 'Skldniki',
-    description: 'Opis',
-  },
-  {
-    id: 2,
-    title: 'Rosół',
-    ingredients: 'Skldniki2',
-    description: 'Opis',
-  },
-  {
-    id: 3,
-    title: 'Ogórkowa',
-    ingredients: 'Skldniki3',
-    description: 'Opis',
-  },
-];
+import { data } from '../utils';
+
 const HomePage = () => {
   // const url =
   //   'https://crudcrud.com/api/6cefec6443164dc58547b1875b99264e/recipes';
@@ -39,7 +20,7 @@ const HomePage = () => {
         <div>Loading...</div>
       ) : (
         <ul>
-          <List data={[...data]} />
+          <List data={[...data]}  />
         </ul>
       )}
        <button className='btn btn__linkTo'>

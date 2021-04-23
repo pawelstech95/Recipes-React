@@ -12,6 +12,8 @@ import {
 import HomePage from './containers/HomePage';
 import AddRecipePage from './containers/AddRecipePage';
 import ErrorPage from './containers/ErrorPage';
+import EditRecipePage from './containers/EditRecipePage';
+import DetailPage from './containers/DetailPage';
 
 function App() {
   return (
@@ -20,12 +22,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/create" exact component={AddRecipePage} />
-          <Route path="/:id" exact>
-            Wyświetl
-          </Route>
-          <Route path="/:id/edit" exact>
-            Edytuj
-          </Route>
+          <Route path="/:id" exact component={DetailPage} />
+          <Route path="/:id/edit" exact component={EditRecipePage} />
           <Route component={ErrorPage} />
         </Switch>
       </div>
