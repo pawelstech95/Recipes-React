@@ -1,7 +1,11 @@
 import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import useSWR, { mutate } from 'swr';
+import Button from '../components/Button';
 import List from '../components/List';
+import Loader from '../components/Loader';
+import PageTitle from '../components/PageTitle';
+import PageWrapper from '../components/PageWrapper';
 import { axiosInstance, fetcher } from '../utils';
 
 const HomePage = () => {
@@ -14,20 +18,18 @@ const HomePage = () => {
   }, []);
 
   return (
-    <div>
-      <h2 style={{ textAlign: 'center' }}>Recipes list: </h2>
+    <PageWrapper>
+      <PageTitle>Recipes list: </PageTitle>
       {!data ? (
-        <div>Loading...</div>
+        <Loader>Loading...</Loader>
       ) : (
-        <ul>
-          <List data={data} handleRemove={handleRemove} />
-        </ul>
+        <List data={data} handleRemove={handleRemove} />
       )}
 
-      <Link className="btn btn__linkTo  " to="/create">
+      <Button as={Link} $variant="brand" to="/create">
         Add a recipe
-      </Link>
-    </div>
+      </Button>
+    </PageWrapper>
   );
 };
 

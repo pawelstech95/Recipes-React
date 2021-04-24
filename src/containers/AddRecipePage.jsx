@@ -1,8 +1,12 @@
 import React, { useCallback } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
-import Form from '../components/Form';
+import Form from './Form';
+import PageWrapper from '../components/PageWrapper';
+import PageTitle from '../components/PageTitle';
+
 import { axiosInstance } from '../utils';
+import BackLink from '../components/BackLink';
 
 const AddRecipe = () => {
   const history = useHistory();
@@ -16,11 +20,11 @@ const AddRecipe = () => {
   );
 
   return (
-    <>
-      <h2>Create recipe</h2>
-      <Link to="/">Back</Link>
+    <PageWrapper>
+      <PageTitle>Create recipe</PageTitle>
+      <BackLink to="/">Back</BackLink>
       <Form onSubmit={handleSubmit} />
-    </>
+    </PageWrapper>
   );
 };
 
