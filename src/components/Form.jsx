@@ -1,11 +1,34 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { useYupValidationResolver } from '../utils';
+
+const validationSchema = yup.object({
+  title: yup.string().required('Required'),
+  ingredients: yup
+    .array()
+    .of(yup.string())
+    .min(1, 'Min 1 ingredient')
+    .required('Required'),
+  description: yup.string().required('Required'),
+});
 
 const Form = ({
   onSubmit,
   defaultValues = { title: '', ingredients: [], description: '' },
 }) => {
-  const { register, handleSubmit, reset } = useForm({ defaultValues });
+  const resolver = useYupValidationResolver(validationSchema);
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({
+    defaultValues,
+    resolver,
+  });
+
+  console.log(errors);
 
   return (
     <>
@@ -20,6 +43,7 @@ const Form = ({
             placeholder=" e.g. pizza"
           />
         </label>
+        {errors.title?.message}
         <label>
           Ingredients: <br />
           <select {...register('ingredients')} multiple>
@@ -28,6 +52,7 @@ const Form = ({
             <option>other</option>
           </select>
         </label>
+        {errors.ingredients?.message}
         <label>
           Description <br />
           <textarea
@@ -36,6 +61,7 @@ const Form = ({
             placeholder="Description..."
           />
         </label>
+        {errors.description?.message}
         <button className="btn btn__add" type="submit">
           Add
         </button>
