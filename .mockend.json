@@ -1,0 +1,7 @@
+{
+  "Recipe": {
+    "title": "string",
+    "incredience": "string[]",
+    "description": "string"
+  }
+}
