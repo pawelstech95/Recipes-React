@@ -8,6 +8,7 @@ const Input = styled.input`
   width: 100%;
   display: block;
   outline: none;
+  box-sizing: border-box;
 
   &:focus {
     border: 1px solid ${(props) => props.theme.colors.brand};
