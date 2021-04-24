@@ -1,5 +1,5 @@
 // import useSWR from 'swr';
-import {Link} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import List from '../components/List';
 
 // import { fetcher } from '../utils';
@@ -15,17 +15,17 @@ const HomePage = () => {
 
   return (
     <div>
-      <h2>Recipes list: </h2>
+      <h2 style={{textAlign: 'center'}}>Recipes list: </h2>
       {!data ? (
         <div>Loading...</div>
       ) : (
         <ul>
-          <List data={[...data]}  />
+          <List data={[...data]} />
         </ul>
       )}
-       <button className='btn btn__linkTo'>
-        <Link to='/create'>Add a recipe</Link>
-      </button> 
+      <button className="btn btn__linkTo  ">
+        <Link to="/create">Add a recipe</Link>
+      </button>
     </div>
   );
 };
