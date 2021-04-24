@@ -4,13 +4,13 @@ import Recipe from './Recipe';
 const List = ({ data, handleRemove }) => {
   const recipes = data.map((recipe) => {
     return (
-      <li key={recipe._id}>
+      <li key={recipe.id}>
         <Recipe
-          id={recipe._id}
+          id={recipe.id}
           title={recipe.title}
           ingredients={recipe.ingredients}
           description={recipe.description}
-          handleRemove={() => handleRemove(recipe._id)}
+          handleRemove={() => handleRemove(recipe.id)}
         />
       </li>
     );

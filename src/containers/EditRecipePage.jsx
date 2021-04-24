@@ -13,7 +13,7 @@ const DetailPage = ({ match }, e) => {
   const history = useHistory();
 
   const handleSubmit = useCallback(
-    async ({ _id, ...values }) => {
+    async ({ id: _id, ...values }) => {
       await axiosInstance.put(`/recipes/${id}`, values);
       mutate(`/recipes/${id}`);
 
