@@ -17,7 +17,6 @@ const GlobalStyle = createGlobalStyle`
   }
 
   #root {
-    min-height: 100vh;
     display: flex;
     justify-content: center;
     padding: 1rem;
