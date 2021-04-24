@@ -1,28 +1,34 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router';
+import useSWR, { mutate } from 'swr';
 
 import Form from '../components/Form';
 
-import { data } from '../utils';
+import { axiosInstance, fetcher } from '../utils';
 
-const DetailPage = ({ match }) => {
-  const id = match.params.id * 1; // ??
+const DetailPage = ({ match }, e) => {
+  const id = match.params.id;
 
-  //   const [state, setState] = useState(data);
-  const displayRecipe = data.map(
-    (recipe) => recipe.id === id && <h2 key={recipe.id}>{recipe.title}</h2>
+  const { data } = useSWR(`/recipes/${id}`, fetcher);
+  const history = useHistory();
+
+  const handleSubmit = useCallback(
+    async ({ _id, ...values }) => {
+      await axiosInstance.put(`/recipes/${id}`, values);
+      mutate(`/recipes/${id}`);
+
+      history.push('/');
+    },
+    [history, id]
   );
 
-  //   console.log(data)
-  //   console.log(id, 'params');
-  //   console.log(displayDetail);
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="recipe__detailPage">
-      <h2>Recipe</h2>
-      {displayRecipe}
-      <Form 
-      />
+      <Form defaultValues={data} onSubmit={handleSubmit} />
     </div>
   );
 };

@@ -1,21 +1,12 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-// import Recipe from './Recipe';
-const Form = () => {
-  // useForm
-  const defaultState = { title: '', ingredients: [], description: '' };
-  const {
-    register,
-    handleSubmit,
-    // watch,
-    // formState: { errors },
-  } = useForm(defaultState);
-  const onSubmit = (values) => {
-    console.log(values);
-  };
-  const handleAddRecipe = () => {
-    console.log();
-  };
+
+const Form = ({
+  onSubmit,
+  defaultValues = { title: '', ingredients: [], description: '' },
+}) => {
+  const { register, handleSubmit, reset } = useForm({ defaultValues });
+
   return (
     <>
       <form className="form" onSubmit={handleSubmit(onSubmit)}>
@@ -45,14 +36,14 @@ const Form = () => {
             placeholder="Description..."
           />
         </label>
-        <button
-          className="btn btn__add"
-          type="submit"
-          onClick={handleAddRecipe}
-        >
+        <button className="btn btn__add" type="submit">
           Add
         </button>
-        <button className="btn btn__remove" type="reset" onClick={() => {}}>
+        <button
+          className="btn btn__remove"
+          type="button"
+          onClick={() => reset()}
+        >
           Clear
         </button>
       </form>

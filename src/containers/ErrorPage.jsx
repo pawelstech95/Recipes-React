@@ -1,7 +1,7 @@
 import React from 'react';
 
 const ErrorPage = () => {
-  return <div>Page not faund</div>;
+  return <div style={{fontSize: '30px', paddingTop: '30px'}}>Page not faund</div>;
 };
 
 export default ErrorPage;

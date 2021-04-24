@@ -1,16 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Recipe = ({ title, id, handleRemove, handleEdit }) => {
+const Recipe = ({ title, id, handleRemove }) => {
   return (
     <>
       <p>{title}</p>
-      <button className="btn btn__edit" onClick={handleEdit}>
-        <Link to={`/${id}/edit`}>Edit</Link>
-      </button>
-      <button className="btn btn__detail" onClick={handleEdit}>
-        <Link to={`/${id}`}>Detail</Link>
-      </button>
+      <Link to={`/${id}/edit`}>Edit</Link>
+      <Link to={`/${id}`}>Detail</Link>
       <button className="btn btn__remove" onClick={handleRemove}>
         Remove
       </button>

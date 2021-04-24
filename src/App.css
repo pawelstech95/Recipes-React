@@ -2,15 +2,9 @@ body {
   background-color: rgba(219, 199, 199, 0.479);
   font-size: 1rem;
   box-sizing: border-box;
-  overflow: hidden;
   position: relative;
 }
 .App {
-  margin: 0 auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 10%);
   text-align: center;
 }
 li {

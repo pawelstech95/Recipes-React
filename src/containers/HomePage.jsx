@@ -1,31 +1,32 @@
-// import useSWR from 'swr';
+import { useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import useSWR, { mutate } from 'swr';
 import List from '../components/List';
-
-// import { fetcher } from '../utils';
-import { data } from '../utils';
+import { axiosInstance, fetcher } from '../utils';
 
 const HomePage = () => {
-  // const url =
-  //   'https://crudcrud.com/api/6cefec6443164dc58547b1875b99264e/recipes';
+  const { data } = useSWR('/recipes', fetcher);
 
-  // const { data } = useSWR(url, fetcher);
+  const handleRemove = useCallback(async (id) => {
+    await axiosInstance.delete(`/recipes/${id}`);
 
-  // console.log(data);
+    mutate('/recipes');
+  }, []);
 
   return (
     <div>
-      <h2 style={{textAlign: 'center'}}>Recipes list: </h2>
+      <h2 style={{ textAlign: 'center' }}>Recipes list: </h2>
       {!data ? (
         <div>Loading...</div>
       ) : (
         <ul>
-          <List data={[...data]} />
+          <List data={data} handleRemove={handleRemove} />
         </ul>
       )}
-      <button className="btn btn__linkTo  ">
-        <Link to="/create">Add a recipe</Link>
-      </button>
+
+      <Link className="btn btn__linkTo  " to="/create">
+        Add a recipe
+      </Link>
     </div>
   );
 };

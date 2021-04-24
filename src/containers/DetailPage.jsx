@@ -1,30 +1,26 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-
-import { data } from '../utils';
+import React from 'react';
+import useSWR from 'swr';
+import { fetcher } from '../utils';
 
 const DetailPage = ({ match }) => {
-  const id = match.params.id * 1; // ??
+  const id = match.params.id;
 
-  const displayRecipe = data.map((recipe) =>
-    recipe.id === id ? (
-      <li key={recipe.id}>
-        <h2>{recipe.title}</h2>
-        <p>{recipe.ingredients}</p>
-        <p>{recipe.description}</p>
-        <p>{recipe.id}</p>
-      </li>
-    ) : null
-  );
+  const { data } = useSWR(`/recipes/${id}`, fetcher);
 
-//   console.log(data);
-//   console.log(id, 'params');
-//   console.log(displayRecipe);
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="recipe__detailPage">
-      <h2>Recipe</h2>
-      <ul>{displayRecipe}</ul>
+      {/* <h2>Recipe</h2> */}
+      <ul>
+        <li>
+          <h2>{data.title}</h2>
+          <p>{data.ingredients.join(', ')}</p>
+          <p>{data.description}</p>
+        </li>
+      </ul>
     </div>
   );
 };
