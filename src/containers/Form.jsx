@@ -70,7 +70,7 @@ const Form = ({
             id="ingredients"
             multiple
           >
-            <option>chease</option>
+            <option>cheese</option>
             <option>milk</option>
             <option>other</option>
           </Input>
